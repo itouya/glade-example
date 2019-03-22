@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+    <gresource prefix="/jp/co/alpha">
+        <file preprocess="xml-stripblanks">vclass_server.glade</file>
+    </gresource>
+</gresources>
