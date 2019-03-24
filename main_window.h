@@ -11,6 +11,11 @@ class MainWindow : public Gtk::ApplicationWindow {
 
     protected:
         Glib::RefPtr<Gtk::Builder> m_refBuilder;
+        Gtk::Button* m_power_button;
+        Gtk::Button* m_quit_button;
+        // signal handlers
+        void on_power_cb();
+        void on_quit_cb();
 };
 
 #endif // MAIN_WINDOW_H
