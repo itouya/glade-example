@@ -1,5 +1,6 @@
 #include "vclass_server.h"
 #include "main_window.h"
+#include "layout_area.h"
 
 #include <iostream>
 

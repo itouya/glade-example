@@ -27,7 +27,6 @@ LayoutArea* LayoutArea::create()
 
 bool LayoutArea::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
 {
-    std::cerr << G_STRFUNC << std::endl;
     Gtk::Allocation allocation = get_allocation();
     const int width = allocation.get_width();
     const int height = allocation.get_height();
@@ -121,8 +120,10 @@ bool LayoutArea::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
 
 bool LayoutArea::on_timeout()
 {
-    std::cerr << G_STRFUNC << std::endl;
-    Gdk::Rectangle r(0, 0, get_allocation().get_width(), get_allocation().get_height());
-    // win->invalidate_rect(r, false);
+    auto win = get_window();
+    if(win) {
+        Gdk::Rectangle r(0, 0, get_allocation().get_width(), get_allocation().get_height());
+        win->invalidate_rect(r, false);
+    }
     return true;
 }

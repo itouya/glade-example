@@ -8,7 +8,9 @@ MainWindow::MainWindow(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 : Gtk::ApplicationWindow(cobject),
   m_refBuilder(refBuilder),
   m_power_button(nullptr),
-  m_quit_button(nullptr) {
+  m_quit_button(nullptr),
+  m_layout_area(nullptr)
+ {
     m_refBuilder->get_widget("PowerButton", m_power_button);
     if(!m_power_button)
         throw std::runtime_error("No \"PowerButton\" object in vclass_server.glade");
@@ -19,8 +21,9 @@ MainWindow::MainWindow(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
         throw std::runtime_error("No \"QuitButton\" object in vclass_server.glade");
     m_quit_button->signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::on_quit_cb));
 
-    auto layout_area = LayoutArea::create();
-    layout_area->show();
+    m_refBuilder->get_widget_derived("LayoutArea", m_layout_area);
+    if(!m_layout_area)
+        throw std::runtime_error("No \"LayoutArea\" object in vclass_server.glade");
 }
 
 MainWindow* MainWindow::create() {
