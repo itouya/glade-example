@@ -1,7 +1,7 @@
 CC ?= gcc
 CXX ?= g++
 PROGRAM = vclass_server
-CXXFILES = main.cc vclass_server.cc main_window.cc alert_dialog.cc
+CXXFILES = main.cc vclass_server.cc main_window.cc alert_dialog.cc layout_area.cc
 BUILT_SRC = resources.c
 OBJS = $(BUILT_SRC:.c=.o) $(CXXFILES:.cc=.o)
 DEPDIR = .deps

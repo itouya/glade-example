@@ -1,5 +1,6 @@
 #include "main_window.h"
 #include "alert_dialog.h"
+#include "layout_area.h"
 
 #include <iostream>
 
@@ -18,6 +19,8 @@ MainWindow::MainWindow(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
         throw std::runtime_error("No \"QuitButton\" object in vclass_server.glade");
     m_quit_button->signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::on_quit_cb));
 
+    auto layout_area = LayoutArea::create();
+    layout_area->show();
 }
 
 MainWindow* MainWindow::create() {
